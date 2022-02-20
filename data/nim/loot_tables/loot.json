@@ -1,0 +1,35 @@
+{
+	"type": "minecraft:chest",
+	"pools": [{
+		"rolls": {
+			"min": 0,
+		  	"max": 12
+		},
+		"entries": [
+		  	{
+				"type": "minecraft:loot_table",
+				"weight": 16,
+				"quality": 2,
+				"name": "nim:bullet"
+		  	},
+		  	{
+				"type": "minecraft:loot_table",
+				"weight": 16,
+				"quality": 2,
+				"name": "nim:weapon"
+		  	},
+			{
+				"type": "minecraft:loot_table",
+				"weight": 16,
+				"quality": 2,
+				"name": "nim:eat"
+			},
+			{
+				"type": "minecraft:loot_table",
+				"weight": 16,
+				"quality": 2,
+				"name": "nim:equip"
+			}
+		]
+	}]
+}
