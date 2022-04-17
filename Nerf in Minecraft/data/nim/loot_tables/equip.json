@@ -1,0 +1,32 @@
+{
+	"type": "minecraft:chest",
+	"pools": [{
+		"rolls": 1.4,
+		"entries": [
+            {
+				"type": "minecraft:item",
+				"name": "cgm:tactical_stock"
+			},
+			{
+				"type": "minecraft:item",
+				"name": "cgm:specialised_grip"
+			},
+			{
+				"type": "minecraft:item",
+				"name": "cgm:short_scope"
+			},
+			{
+				"type": "minecraft:item",
+				"name": "cgm:long_scope"
+			},
+			{
+				"type": "minecraft:item",
+				"name": "cgm:medium_scope"
+			},
+			{
+				"type": "minecraft:item",
+				"name": "cgm:silencer"
+			}
+		]
+	}]
+}

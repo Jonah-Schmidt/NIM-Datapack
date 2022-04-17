@@ -1,0 +1,11 @@
+give @p red_dye{display:{Name:'{"text":"Wave","color":"yellow","bold":true,"italic":false}',Lore:['{"text":"A simple wave to say hi","color":"red","italic":false}','[{"text":" "}]','[{"text":"Hold and press ","color":"aqua","italic":false},{"keybind":"key.swapOffhand","italic":false},{"text":" to use","italic":false}]']},emote:wave,emotes:1b} 1
+
+give @p orange_dye{display:{Name:'{"text":"Big Wave","color":"yellow","bold":true,"italic":false}',Lore:['{"text":"Wave to your friends for a nice greeting","color":"red","italic":false}','[{"text":" "}]','[{"text":"Hold and press ","color":"aqua","italic":false},{"keybind":"key.swapOffhand","italic":false},{"text":" to use","italic":false}]']},emote:big_wave,emotes:1b} 1
+
+give @p yellow_dye{display:{Name:'{"text":"Clap","color":"yellow","bold":true,"italic":false}',Lore:['{"text":"Congratulate people with a round of applause!","color":"red","italic":false}','[{"text":" "}]','[{"text":"Hold and press ","color":"aqua","italic":false},{"keybind":"key.swapOffhand","italic":false},{"text":" to use","italic":false}]']},emote:clap,emotes:1b} 1
+
+give @p lime_dye{display:{Name:'{"text":"Nod Head","color":"yellow","bold":true,"italic":false}',Lore:['{"text":"Nod your head to agree to a statement :D","color":"red","italic":false}','[{"text":" "}]','[{"text":"Hold and press ","color":"aqua","italic":false},{"keybind":"key.swapOffhand","italic":false},{"text":" to use","italic":false}]']},emote:nod,emotes:1b} 1
+
+give @p light_blue_dye{display:{Name:'{"text":"Shake Head","color":"yellow","bold":true,"italic":false}',Lore:['{"text":"Shake your head to say \'No\'!","color":"red","italic":false}','[{"text":" "}]','[{"text":"Hold and press ","color":"aqua","italic":false},{"keybind":"key.swapOffhand","italic":false},{"text":" to use","italic":false}]']},emote:shake,emotes:1b} 1
+
+give @p purple_dye{display:{Name:'{"text":"Point Forwards","color":"yellow","bold":true,"italic":false}',Lore:['{"text":"Point your hand in front of you","color":"red","italic":false}','[{"text":" "}]','[{"text":"Hold and press ","color":"aqua","italic":false},{"keybind":"key.swapOffhand","italic":false},{"text":" to use","italic":false}]']},emote:point,emotes:1b} 1
