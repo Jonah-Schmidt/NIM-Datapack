@@ -8,7 +8,7 @@
 		"entries": [
 		  	{
 				"type": "minecraft:loot_table",
-				"weight": 16,
+				"weight": 13,
 				"quality": 2,
 				"name": "nim:bullet"
 		  	},
@@ -20,7 +20,7 @@
 		  	},
 			{
 				"type": "minecraft:loot_table",
-				"weight": 16,
+				"weight": 6,
 				"quality": 2,
 				"name": "nim:eat"
 			},

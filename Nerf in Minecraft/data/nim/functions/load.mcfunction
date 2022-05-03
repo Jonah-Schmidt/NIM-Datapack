@@ -78,7 +78,6 @@ gamerule doWeatherCycle false
 gamerule drowningDamage true
 gamerule fallDamage true
 gamerule fireDamage true
-gamerule freezeDamage true
 gamerule keepInventory true
 gamerule logAdminCommands true
 gamerule maxEntityCramming 64
@@ -100,3 +99,5 @@ scoreboard players enable @a layDown
 # give
 #/give @p diamond_chestplate{display:{Name:'{"text":"Kugelsichere Weste","color":"#FF0000","bold":true}'},Damage:488} 
 #/give @p leather_helmet{display:{Name:'{"text":"Nachtsichtgerät","color":"aqua","bold":true}',color:340736},Unbreakable:1b} 1
+
+execute if entity @a[nbt={Inventory: [{Slot: 103b, id: "minecraft:leather_helmet", tag: {display:{Name:'{"text":"Nachtsichtgerät","color":"aqua","bold":true}',color:340736},Unbreakable:1b}}]}]
