@@ -37,9 +37,34 @@ execute if score defuse timer matches ..0 run title @a title ""
 execute if score defuse timer matches ..0 run scoreboard players set defendersWin data 1
 execute if score defuse timer matches ..0 run scoreboard players set explode timer 404
 execute if score defuse timer matches ..0 run scoreboard players set defuse timer 404
+
+##################################################################################
+
+# set tnt Marker
+execute as @e[type=armor_stand] at @s if block ~ ~-1 ~ bedrock run data merge entity @s {Tags:[tntMarker],Invisible:1b,Marker:1b}
+# Kirchensitze
+effect give @e[type=pig,tag=sitz_kirche] minecraft:invisibility 999999 255 true
+# join start when no team
+team join Start @a[team=!Admin,team=!Attackers,team=!Cam,team=!Death,team=!Defenders,team=!Start]
+# place chest at chestMarker if not
+execute as @e[tag=chestMarker] at @s unless block ~ ~ ~ barrel run setblock ~ ~ ~ barrel[facing=up]
+# save kill
+kill @e[type=tnt]
+kill @e[type=cgm:missile]
+kill @e[type=tnt_minecart]
+kill @e[type=end_crystal]
+# clear
+clear @a tnt_minecart
+clear @a end_crystal
+clear @a cgm:bazooka
+clear @a flint_and_steel
+# center armorstand
+execute as @e[type=minecraft:armor_stand,tag=!bomb,tag=!deadbody] at @s align xyz run teleport @s ~0.5 ~ ~0.5
+# einhorn
+function nim:dev/einhorn
+# clear infested
+function nim:dev/infested_blocks_clear
+# NVGS
+execute as @a[nbt={Inventory: [{Slot: 103b, id: "minecraft:leather_helmet", tag: {display:{Name:'{"text":"Nachtsichtgerät","color":"aqua","bold":true}',color:340736},Unbreakable:1b}}]}] run effect give @s night_vision 2 1 true
 # loop
 schedule function nim:1s 1s
-
-
-
-# scoreboard objectives setdisplay sidebar timers

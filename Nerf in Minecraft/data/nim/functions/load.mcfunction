@@ -1,5 +1,5 @@
 # chat logs
-tellraw @a ["",{"text":"[","color":"dark_purple"},{"text":"INFO","color":"yellow"},{"text":"]","color":"dark_purple"},{"text":" -> ","color":"blue"},{"text":"Server reloaded!","color":"dark_green"}]
+tellraw @a ["",{"text":"a - [","color":"dark_purple"},{"text":"INFO","color":"yellow"},{"text":"]","color":"dark_purple"},{"text":" -> ","color":"blue"},{"text":"Server reloaded!","color":"dark_green"}]
 # remove schores
 scoreboard objectives remove startGame
 scoreboard objectives remove data
