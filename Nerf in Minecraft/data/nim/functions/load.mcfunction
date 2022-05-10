@@ -1,5 +1,5 @@
 # chat logs
-tellraw @a ["",{"text":"a - [","color":"dark_purple"},{"text":"INFO","color":"yellow"},{"text":"]","color":"dark_purple"},{"text":" -> ","color":"blue"},{"text":"Server reloaded!","color":"dark_green"}]
+tellraw @a ["",{"text":"[","color":"dark_purple"},{"text":"INFO","color":"yellow"},{"text":"]","color":"dark_purple"},{"text":" -> ","color":"blue"},{"text":"Server reloaded!","color":"dark_green"}]
 # remove schores
 scoreboard objectives remove startGame
 scoreboard objectives remove data
@@ -12,6 +12,8 @@ scoreboard objectives remove points
 scoreboard objectives remove standUp
 scoreboard objectives remove layDown
 scoreboard objectives remove timer
+scoreboard objectives remove adminCache
+scoreboard objectives remove pointsCache
 # create scores
 scoreboard objectives add startGame trigger
 scoreboard objectives add data dummy
@@ -24,6 +26,7 @@ scoreboard objectives add points dummy
 scoreboard objectives add standUp trigger
 scoreboard objectives add layDown trigger
 scoreboard objectives add timer dummy
+scoreboard objectives add pointsCache dummy
 # team remove
 team remove Admin
 team remove Cam
@@ -94,8 +97,7 @@ team join Admin @a[gamemode=spectator]
 team join Start @a[gamemode=adventure]
 # start 1s function
 schedule function nim:1s 1s
-# enable lay Down
-scoreboard players enable @a layDown
+
 # give
 #/give @p diamond_chestplate{display:{Name:'{"text":"Kugelsichere Weste","color":"#FF0000","bold":true}'},Damage:488} 
 #/give @p leather_helmet{display:{Name:'{"text":"Nachtsichtgerät","color":"aqua","bold":true}',color:340736},Unbreakable:1b} 1
