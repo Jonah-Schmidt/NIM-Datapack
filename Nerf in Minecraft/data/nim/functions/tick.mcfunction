@@ -152,7 +152,13 @@ clear @a flint_and_steel
 #spreadplayers 0 0 20 20 true @e[tag=otze]
 #/summon armor_stand ~ ~ ~ {NoGravity:1b,Invulnerable:1b,Glowing:1b,Small:1b,Marker:1b,Invisible:1b,NoBasePlate:1b,Tags:["bomb"],Rotation:[45F,45F],ArmorItems:[{},{},{},{id:"minecraft:tnt",Count:1b}]}
 
+# Need :
+#   Dead Player not tp
+#   View Armorstand when all Attacker dead and Bomb is placed
+#   Swith at Round 13
+#   Win when more then 13 wins
+#   25th round when 12 to 12
 
-#   1. RESET GAME
-#   2. Fallschirme
-#   *. Fertig
+# Maybe :
+#   Improve laying engine
+#   Bomb and Deadbody grass fix
