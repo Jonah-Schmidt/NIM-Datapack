@@ -1,0 +1,18 @@
+{
+    "replace": false,
+    "values": [
+        "minecraft:ladder",
+        "minecraft:vine",
+        "minecraft:scaffolding",
+        "minecraft:weeping_vines",
+        "minecraft:weeping_vines_plant",
+        "minecraft:twisting_vines",
+        "minecraft:twisting_vines_plant",
+
+        "minecraft:iron_bars",
+        "minecraft:chain",
+        "minecraft:end_rod",
+        "#minecraft:fences",
+        "#minecraft:fence_gates"
+    ]
+}

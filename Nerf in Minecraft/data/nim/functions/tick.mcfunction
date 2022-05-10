@@ -57,6 +57,8 @@ execute as @a[scores={layDown=1..}] run scoreboard players reset @s layDown
 # center laying 
 execute as @a[tag=laying] at @s align xyz run teleport @s ~0.5 ~ ~0.5
 # death 
+execute as @a[scores={hit=1..},tag=laying] at @s run setblock ~ ~1 ~ air
+execute as @a[scores={hit=1..},tag=laying] run trigger standUp
 execute as @a[scores={hit=1..}] run team join Death @s
 execute as @a[scores={hit=1..}] run gamemode spectator @s
 execute as @a[scores={hit=1..}] run tellraw @a {"selector":"@s"}
@@ -64,9 +66,9 @@ execute as @a[scores={hit=1..,tntCache=1,attackersCache=1}] run clear @a tnt
 execute as @a[scores={hit=1..,tntCache=1}] at @s run summon armor_stand ~ ~-0.67 ~ {NoGravity:1b,Invulnerable:1b,Glowing:1b,Small:1b,Marker:1b,Invisible:1b,NoBasePlate:1b,Tags:["bomb"],Rotation:[45F,45F],ArmorItems:[{},{},{},{id:"minecraft:tnt",Count:1b}]}
 execute as @a[scores={hit=1..}] at @s run summon armor_stand ~ ~-1.37 ~ {DisabledSlots:6144,Tags:["deadbody"],Invulnerable:1b,NoBasePlate:1b,NoGravity:1b,ShowArms:1b,ArmorItems:[{},{},{id:"leather_chestplate",Count:1b,tag:{display:{color:6501632}}},{id:"player_head",Count:1b}],HandItems:[{},{}],Pose:{Body:[297f,336f,0f],Head:[271f,344f,0f],LeftArm:[92f,55f,7f],RightArm:[84f,262f,3f]}}
 execute as @a[scores={hit=1..}] run scoreboard players set @s hit 0
-# drop tnt
-execute as @e[type=minecraft:item,nbt={Item: {id: "minecraft:tnt",Count:1b},Age:9s}] at @s run summon armor_stand ~ ~-0.67 ~ {NoGravity:1b,Invulnerable:1b,Glowing:1b,Small:1b,Marker:1b,Invisible:1b,NoBasePlate:1b,Tags:["bomb"],Rotation:[45F,45F],ArmorItems:[{},{},{},{id:"minecraft:tnt",Count:1b}]}
-execute as @e[type=minecraft:item,nbt={Item: {id: "minecraft:tnt",Count:1b},Age:10s}] run kill @s
+# drop tnts
+execute as @e[type=minecraft:item,nbt={Item: {id: "minecraft:tnt",Count:1b},Age:6s}] at @s run summon armor_stand ~ ~-0.67 ~ {NoGravity:1b,Invulnerable:1b,Glowing:1b,Small:1b,Marker:1b,Invisible:1b,NoBasePlate:1b,Tags:["bomb"],Rotation:[45F,45F],ArmorItems:[{},{},{},{id:"minecraft:tnt",Count:1b}]}
+execute as @e[type=minecraft:item,nbt={Item: {id: "minecraft:tnt",Count:1b},Age:8s}] run kill @s
 # all death ?
 execute if entity @a[scores={defendersCache=1}] if entity @a[scores={attackersCache=1}] as @e[type=minecraft:armor_stand,tag=tntMarker] at @s unless block ~ ~ ~ minecraft:tnt unless entity @a[team=Attackers] run scoreboard players set defendersWin data 1
 execute if entity @a[scores={defendersCache=1}] if entity @a[scores={attackersCache=1}] unless entity @a[team=Defenders] run scoreboard players set attackersWin data 1
