@@ -3,7 +3,7 @@
 	"pools": [{
 		"rolls": {
 			"min": 0,
-		  	"max": 12
+		  	"max": 5
 		},
 		"entries": [
 		  	{
@@ -14,19 +14,19 @@
 		  	},
 		  	{
 				"type": "minecraft:loot_table",
-				"weight": 16,
+				"weight": 14,
 				"quality": 2,
 				"name": "nim:weapon"
 		  	},
 			{
 				"type": "minecraft:loot_table",
-				"weight": 6,
-				"quality": 2,
+				"weight": 4,
+				"quality": 1,
 				"name": "nim:eat"
 			},
 			{
 				"type": "minecraft:loot_table",
-				"weight": 16,
+				"weight": 14,
 				"quality": 2,
 				"name": "nim:equip"
 			}

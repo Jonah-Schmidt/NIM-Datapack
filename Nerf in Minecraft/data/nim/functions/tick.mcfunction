@@ -1,11 +1,13 @@
 # start game
 scoreboard players enable einfach_Zebra startGame
 execute if entity @a[scores={startGame=1..}] run team join Start @a[team=!Admin,team=!Cam]
+execute if entity @a[scores={startGame=1..}] run clear @a[team=Start]
 execute if entity @a[scores={startGame=1..}] run scoreboard players set selectRandomTeam data 1
-execute if entity @a[scores={startGame=1..}] run tellraw @a "Nutze /trigger layDown um dich hinzulegen"
-execute if entity @e[scores={startGame=1..}] run scoreboard players set resetGame data 1
-execute if entity @e[scores={startGame=1..}] run give @a[team=Start] toyguns:defender
-execute if entity @e[scores={startGame=1..}] run give @a[team=Start] toyguns:dart 128
+execute if entity @a[scores={startGame=1..}] run scoreboard players set resetGame data 1
+execute if entity @a[scores={startGame=1..}] run give @a[team=Start] toyguns:defender
+execute if entity @a[scores={startGame=1..}] run give @a[team=Start] toyguns:dart 128
+execute if entity @a[scores={startGame=1..}] run scoreboard players set randomChest data 1
+execute if entity @a[scores={startGame=1..}] run time set midnight
 execute if entity @a[scores={startGame=1..}] run scoreboard players reset @a startGame
 # select random team
 execute if score selectRandomTeam data matches 1 run team join Attackers @r[team=Start]
@@ -21,14 +23,6 @@ execute if score selectRandomTeam data matches 1 run team join Defenders @r[team
 execute if score selectRandomTeam data matches 1 run team join Attackers @r[team=Start]
 execute if score selectRandomTeam data matches 1 run team join Defenders @r[team=Start]
 execute if score selectRandomTeam data matches 1 run scoreboard players set selectRandomTeam data 0
-# change teams at round 13
-execute if score roundsCache data matches 13 run team join Defenders @a[scores={attackersCache=1}]
-execute if score roundsCache data matches 13 run team join Attackers @a[scores={defendersCache=1}]
-execute if score roundsCache data matches 13 run scoreboard players set @a[team=Defenders] defendersCache 1
-execute if score roundsCache data matches 13 run scoreboard players set @a[team=Attackers] attackersCache 1
-execute if score roundsCache data matches 13 run scoreboard players operation Attackers points = defenders pointsCache
-execute if score roundsCache data matches 13 run scoreboard players operation Defenders points = attackers pointsCache
-execute if score roundsCache data matches 13 run scoreboard players set roundsCache data 20
 # team cache
 scoreboard players set @a[team=Attackers] adminCache 1
 scoreboard players set @a[team=Defenders] adminCache 2
@@ -87,8 +81,7 @@ execute if score randomChest data matches 1 run kill @e[type=item]
 execute if score randomChest data matches 1 as @e[tag=chestMarker,type=armor_stand] at @s run setblock ~ ~ ~ barrel[facing=up]{LootTable:"nim:loot"}
 execute if score randomChest data matches 1 run tellraw @a ["",{"text":"[","color":"dark_purple"},{"text":"INFO","color":"yellow"},{"text":"]","color":"dark_purple"},{"text":" -> ","color":"blue"},{"text":"Chests have been refilled!","color":"dark_green"}]
 execute if score randomChest data matches 1 run scoreboard players set randomChest data 0
-# attackers win
-execute if score attackersWin data matches 1 run tellraw @a "attackers win"
+# attackers wins
 execute if score attackersWin data matches 1 run title @a times 20 80 20
 execute if score attackersWin data matches 1 run title @a[scores={attackersCache=1..}] title {"text":"You Win !","color":"dark_green"}
 execute if score attackersWin data matches 1 run title @a[scores={defendersCache=1..}] title {"text":"Attackers Win !","color":"dark_red"}
@@ -96,10 +89,10 @@ execute if score attackersWin data matches 1 run scoreboard players add Attacker
 execute if score attackersWin data matches 1 run scoreboard players add attackers pointsCache 1
 execute if score attackersWin data matches 1 run scoreboard players add Runden points 1
 execute if score attackersWin data matches 1 run scoreboard players add roundsCache data 1
+execute if score attackersWin data matches 1 run scoreboard players add roundsCache pointsCache 1
 execute if score attackersWin data matches 1 run scoreboard players set resetGame data 1
 execute if score attackersWin data matches 1 run scoreboard players set attackersWin data 0
 # defenders win
-execute if score defendersWin data matches 1 run tellraw @a "defenders win"
 execute if score defendersWin data matches 1 run title @a times 20 80 20
 execute if score defendersWin data matches 1 run title @a[scores={attackersCache=1..}] title {"text":"Defenders Win !","color":"dark_red"}
 execute if score defendersWin data matches 1 run title @a[scores={defendersCache=1..}] title {"text":"You Win !","color":"dark_green"}
@@ -107,10 +100,22 @@ execute if score defendersWin data matches 1 run scoreboard players add Defender
 execute if score defendersWin data matches 1 run scoreboard players add defenders pointsCache 1
 execute if score defendersWin data matches 1 run scoreboard players add Runden points 1
 execute if score defendersWin data matches 1 run scoreboard players add roundsCache data 1
+execute if score defendersWin data matches 1 run scoreboard players add roundsCache pointsCache 1
 execute if score defendersWin data matches 1 run scoreboard players set resetGame data 1
 execute if score defendersWin data matches 1 run scoreboard players set defendersWin data 0
+# change teams at round 13
+execute if score roundsCache data matches 13 as @a[team=Death] run gamemode adventure @s
+execute if score roundsCache data matches 13 run team join Defenders @a[scores={attackersCache=1}]
+execute if score roundsCache data matches 13 run team join Attackers @a[scores={defendersCache=1}]
+execute if score roundsCache data matches 13 run scoreboard players set @a[team=Defenders] defendersCache 1
+execute if score roundsCache data matches 13 run scoreboard players set @a[team=Attackers] attackersCache 1
+execute if score roundsCache data matches 13 run scoreboard players reset @a[team=Defenders] attackersCache
+execute if score roundsCache data matches 13 run scoreboard players reset @a[team=Attackers] defendersCache
+execute if score roundsCache data matches 13 run scoreboard players operation Attackers points = defenders pointsCache
+execute if score roundsCache data matches 13 run scoreboard players operation Defenders points = attackers pointsCache
+execute if score roundsCache data matches 13 run scoreboard players set randomChest data 1
+execute if score roundsCache data matches 13 run scoreboard players set roundsCache data 404
 # reset Game
-execute if score resetGame data matches 1 run tellraw @a "reset Game"
 execute if score resetGame data matches 1 at @e[tag=tntMarker] run setblock ~ ~ ~ air
 execute if score resetGame data matches 1 as @a[team=Death] run gamemode adventure @s
 execute if score resetGame data matches 1 as @a[tag=laying] at @s run setblock ~ ~1 ~ air
@@ -118,8 +123,6 @@ execute if score resetGame data matches 1 as @a[tag=laying] run trigger standUp
 execute if score resetGame data matches 1 run scoreboard objectives setdisplay sidebar points
 execute if score resetGame data matches 1 as @a[scores={attackersCache=1}] run team join Attackers @s
 execute if score resetGame data matches 1 as @a[scores={defendersCache=1}] run team join Defenders @s 
-execute if score resetGame data matches 1 as @a[scores={defendersCache=1}] run teleport @e[tag=defendersSpawn,limit=1]
-execute if score resetGame data matches 1 as @a[scores={attackersCache=1}] run teleport @e[tag=attackersSpawn,limit=1]
 execute if score resetGame data matches 1 run clear @a shears
 execute if score resetGame data matches 1 run give @a[team=Defenders] shears 1
 execute if score resetGame data matches 1 run clear @a tnt
@@ -129,9 +132,26 @@ execute if score resetGame data matches 1 as @e[tag=roundReset] at @s run setblo
 execute if score resetGame data matches 1 run scoreboard players set roundReset timer 1
 execute if score roundReset timer matches 1..19 run scoreboard players add roundReset timer 1
 execute if score roundReset timer matches 20 as @e[tag=roundReset] at @s run setblock ~ ~ ~ glass
+execute if score roundReset timer matches 10 as @a[scores={defendersCache=1}] run teleport @e[tag=defendersSpawn,limit=1]
+execute if score roundReset timer matches 10 as @a[scores={attackersCache=1}] run teleport @e[tag=attackersSpawn,limit=1]
 execute if score roundReset timer matches 20 run scoreboard players set roundReset timer 0 
 execute if score resetGame data matches 1 run kill @e[tag=deadbody]
+execute if score resetGame data matches 1 if score attackers pointsCache matches 13.. run scoreboard players set attackersFinalWin data 1
+execute if score resetGame data matches 1 if score defenders pointsCache matches 13.. run scoreboard players set defendersFinalWin data 1
+execute if score resetGame data matches 1 run effect give @a[gamemode=adventure] saturation 4 255 true
+execute if score resetGame data matches 1 run effect give @a[gamemode=adventure] regeneration 4 255 true
 execute if score resetGame data matches 1 run scoreboard players set resetGame data 0
+# Attackers Finalwin
+execute if score attackersFinalWin data matches 1 run tellraw @a "attackers final win"
+execute if score attackersFinalWin data matches 1 run scoreboard players set attackersFinalWin data 0
+# Defenders Finalwin
+execute if score defendersFinalWin data matches 1 run tellraw @a "defenders final win"
+execute if score defendersFinalWin data matches 1 run scoreboard players set defendersFinalWin data 0
+# 25th Ronud
+execute if score attackers pointsCache = defenders pointsCache if score roundsChache pointsCache matches 25.. run scoreboard players set 25thRound data 1
+execute if score 25thRound data matches 1 run scoreboard players set roundsChache pointsCache 404
+execute if score 25thRound data matches 1 run tellraw @a "Special Round"
+execute if score 25thRound data matches 1 run scoreboard players set 25thRound data 0
 
 ###########################################################################
 

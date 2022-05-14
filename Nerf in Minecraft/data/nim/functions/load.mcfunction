@@ -70,7 +70,7 @@ team modify Start friendlyFire false
 gamerule announceAdvancements false
 gamerule commandBlockOutput false
 gamerule disableRaids true
-gamerule doDaylightCycle true
+gamerule doDaylightCycle false
 gamerule doEntityDrops false
 gamerule doFireTick false
 gamerule doImmediateRespawn true
@@ -101,5 +101,3 @@ schedule function nim:1s 1s
 # give
 #/give @p diamond_chestplate{display:{Name:'{"text":"Kugelsichere Weste","color":"#FF0000","bold":true}'},Damage:488} 
 #/give @p leather_helmet{display:{Name:'{"text":"Nachtsichtgerät","color":"aqua","bold":true}',color:340736},Unbreakable:1b} 1
-
-execute if entity @a[nbt={Inventory: [{Slot: 103b, id: "minecraft:leather_helmet", tag: {display:{Name:'{"text":"Nachtsichtgerät","color":"aqua","bold":true}',color:340736},Unbreakable:1b}}]}]

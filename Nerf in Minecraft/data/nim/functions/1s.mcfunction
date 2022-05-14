@@ -41,7 +41,7 @@ execute if score defuse timer matches ..0 run scoreboard players set defuse time
 ##################################################################################
 
 # set tnt Marker
-execute as @e[type=armor_stand] at @s if block ~ ~-1 ~ bedrock run data merge entity @s {Tags:[tntMarker],Invisible:1b,Marker:1b}
+execute as @e[type=armor_stand] at @s if block ~ ~-1 ~ bedrock run data merge entity @s {Tags:[tntMarker],Invisible:1b,Marker:1b,LootTable:"nim:loot"}
 # Kirchensitze
 effect give @e[type=pig,tag=sitz_kirche] minecraft:invisibility 999999 255 true
 # join start when no team
@@ -58,3 +58,8 @@ execute as @a[nbt={Inventory: [{Slot: 103b, id: "minecraft:leather_helmet", tag:
 scoreboard players enable @a[tag=!laying] layDown
 # loop
 schedule function nim:1s 1s
+# Set xp
+xp set @a 0 levels
+xp set @a 0 points
+# Change chest Marker
+execute as @e[tag=chestMarker,nbt=!{Invisible:1b,Invulnerable:1b,Marker:1b,NoGravity:1b}] run data merge entity @s {Invisible:1b,Invulnerable:1b,Marker:1b,NoGravity:1b}
