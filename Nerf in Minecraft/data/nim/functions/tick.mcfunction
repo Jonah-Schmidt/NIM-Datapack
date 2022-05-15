@@ -113,6 +113,8 @@ execute if score roundsCache data matches 13 run scoreboard players reset @a[tea
 execute if score roundsCache data matches 13 run scoreboard players reset @a[team=Attackers] defendersCache
 execute if score roundsCache data matches 13 run scoreboard players operation Attackers points = defenders pointsCache
 execute if score roundsCache data matches 13 run scoreboard players operation Defenders points = attackers pointsCache
+execute if score roundsCache data matches 13 run scoreboard players operation attackers pointsCache = Attackers points
+execute if score roundsCache data matches 13 run scoreboard players operation defenders pointsCache = Defenders points
 execute if score roundsCache data matches 13 run scoreboard players set randomChest data 1
 execute if score roundsCache data matches 13 run scoreboard players set roundsCache data 404
 # reset Game
@@ -148,7 +150,7 @@ execute if score attackersFinalWin data matches 1 run scoreboard players set att
 execute if score defendersFinalWin data matches 1 run tellraw @a "defenders final win"
 execute if score defendersFinalWin data matches 1 run scoreboard players set defendersFinalWin data 0
 # 25th Ronud
-execute if score attackers pointsCache = defenders pointsCache if score roundsChache pointsCache matches 25.. run scoreboard players set 25thRound data 1
+execute if score attackers pointsCache = defenders pointsCache if score roundsChache pointsCache matches 24.. run scoreboard players set 25thRound data 1
 execute if score 25thRound data matches 1 run scoreboard players set roundsChache pointsCache 404
 execute if score 25thRound data matches 1 run tellraw @a "Special Round"
 execute if score 25thRound data matches 1 run scoreboard players set 25thRound data 0
@@ -168,6 +170,7 @@ clear @a tnt_minecart
 clear @a end_crystal
 clear @a cgm:bazooka
 clear @a flint_and_steel
+clear @a fire_charge
 
 #spreadplayers 0 0 20 20 true @e[tag=otze]
 #/summon armor_stand ~ ~ ~ {NoGravity:1b,Invulnerable:1b,Glowing:1b,Small:1b,Marker:1b,Invisible:1b,NoBasePlate:1b,Tags:["bomb"],Rotation:[45F,45F],ArmorItems:[{},{},{},{id:"minecraft:tnt",Count:1b}]}

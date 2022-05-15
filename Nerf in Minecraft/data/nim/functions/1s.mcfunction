@@ -1,6 +1,8 @@
 # set spawn point
 execute as @a at @s run spawnpoint @s
 # mange explode timer
+execute as @e[tag=tntMarker] at @s if block ~ ~ ~ tnt run tag @s add active
+execute as @e[tag=tntMarker] at @s if block ~ ~ ~ air run tag @s remove active
 execute as @e[tag=tntMarker] at @s if block ~ ~ ~ air unless score explode timer matches 61 run scoreboard players set explode timer 61
 execute as @e[tag=tntMarker] at @s if block ~ ~ ~ tnt run scoreboard players remove explode timer 1
 # Bomb Plant

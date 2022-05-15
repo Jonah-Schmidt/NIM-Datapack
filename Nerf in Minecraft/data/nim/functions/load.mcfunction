@@ -14,6 +14,7 @@ scoreboard objectives remove layDown
 scoreboard objectives remove timer
 scoreboard objectives remove adminCache
 scoreboard objectives remove pointsCache
+scoreboard objectives remove health
 # create scores
 scoreboard objectives add startGame trigger
 scoreboard objectives add data dummy
@@ -27,6 +28,7 @@ scoreboard objectives add standUp trigger
 scoreboard objectives add layDown trigger
 scoreboard objectives add timer dummy
 scoreboard objectives add pointsCache dummy
+scoreboard objectives add health health
 # team remove
 team remove Admin
 team remove Cam
@@ -97,6 +99,8 @@ team join Admin @a[gamemode=spectator]
 team join Start @a[gamemode=adventure]
 # start 1s function
 schedule function nim:1s 1s
+# set Health Visible
+scoreboard objectives setdisplay list health
 
 # give
 #/give @p diamond_chestplate{display:{Name:'{"text":"Kugelsichere Weste","color":"#FF0000","bold":true}'},Damage:488} 
